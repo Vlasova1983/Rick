@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+:root {  
+  --background:#FFFFFF;
+  --text-color: #000000;
+  --text-akcent:  #00000080;
+  --text-card: #8E8E93; 
+}
+
+body {  
+  color:var(--text-color);
+  background: var(--background);  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;    
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  outline: 0;
+  text-decoration: none;
+  color:var(--text-color);
+}

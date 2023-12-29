@@ -1,0 +1,25 @@
+.header{
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Karla',sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    border-bottom: 2px solid var(--text-akcent);
+    box-shadow: 2px 0px 8px 2px #0000001A;
+    padding: 6px 24px;
+}
+
+@media  (min-width:768px) and (max-width:1279px) {
+    .header{
+        padding: 6px 24px; 
+    }
+}
+
+@media  (min-width:1280px){
+    .header{
+        padding: 6px 210px;
+    }
+}

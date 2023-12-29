@@ -1,0 +1,40 @@
+.footer{
+    display: flex;    
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    font-family: 'Karla',sans-serif;    
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px; 
+    background: var(--background);     
+    border-top: 2px solid var(--text-akcent);
+    box-shadow: -2px 0px 8px 2px #0000001A;
+}
+
+.footerText{
+    padding: 20px 24px;
+}
+
+
+@media  (min-width:768px) and (max-width:1279px) {
+    .footer{            
+        position:fixed;
+        left:0px;
+        bottom:0px;    
+        width:100%;    
+    }   
+}
+
+@media  (min-width:1280px){
+    .footer{            
+        position:fixed;
+        left:0px;
+        bottom:0px;    
+        width:100%;    
+    }   
+}
+
+
+
+
