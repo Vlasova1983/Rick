@@ -21,7 +21,7 @@
  [Макет сайту](https://www.figma.com/file/FnGN0Fq3avUQ75FZ4hlTvO/Rick-and-Morty-(web-responsive)-(Community)?type=design&node-id=97-460&mode=design&t=cZonffAl9ATVb3Kc-0).
 
 
- ## Для перегляду сайту зробіть локальний клон та використайте команду npm run dev  в терміналі
+ ## Для перегляду сайту зробіть локальний клон та використайте команду npm i та  npm run dev  в терміналі
    
 
 
