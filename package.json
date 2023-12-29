@@ -1,7 +1,8 @@
 {
-  "name": "rick-morty",
+  "name": "rick",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/Vlasova1983/Rick",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
