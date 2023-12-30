@@ -78,10 +78,9 @@ export const HeroService = {
     } 
   } ,
 
-  async getByIdMany(array:number[]){
-    console.log(array)
+  async getByIdMany(array:number[]){  
     try {           
-        const {data}= await axios.get<IHeroData>(`/character/[1,2,3]`)                
+      const {data}= await axios.get<IHeroData>(`/character/${array}`)                
     return data           
     }
     catch (error) {

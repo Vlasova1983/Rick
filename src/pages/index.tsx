@@ -4,7 +4,8 @@ import { HeroService } from '@/services/characters.service';
 import { NextPage,GetServerSideProps } from 'next';
 import Head from "next/head";
 
- const  HomePage:NextPage<{ results:IHeroData }>=({results})=> { 
+ const  HomePage:NextPage<{ results:IHeroData }>=({results})=> {
+  console.log('render HomePage')
   return (
     <>
       <Head>
