@@ -1,9 +1,10 @@
-import { IHero, IHeroData } from "@/interfaces/hero.interface";
+import { 
+  // IHero, 
+  IHeroData } from "@/interfaces/hero.interface";
 import axios from "axios";
 
-const API_URL='https://rickandmortyapi.com/api'
-
-axios.defaults.baseURL = API_URL
+const API_URL=process.env.NEXT_PUBLIC_DOMAIN;
+axios.defaults.baseURL = API_URL;
 
 
 // let data:IHeroData={
@@ -68,63 +69,72 @@ axios.defaults.baseURL = API_URL
 
 
 export const HeroService = {
-  async getAll(){
+  async getAll(page:string | string[] | undefined){       
     try {           
-      const {data}= await axios.get<IHeroData>('/character')                
-    return data             
+      const {data}= await axios.get<IHeroData>(`/character/?page=${page}`);               
+    return data;             
     }
     catch (error) {
-      return 'error'
+      return 'error';
     } 
   } ,
 
   async getByIdMany(array:number[]){  
     try {           
-      const {data}= await axios.get<IHeroData>(`/character/${array}`)                
-    return data           
+      const {data}= await axios.get<IHeroData>(`/character/${array}`);                
+    return data;           
     }
     catch (error) {
-       return 'error'
-    } 
+      return 'error';
+    }
   } ,
     
-  async getById(id:number){
+  async getById(id:string | string[] | undefined){
     try {           
-        const {data}= await axios.get<IHeroData>(`/character/${id}`)                
-    return data           
+      const {data}= await axios.get<IHeroData>(`/character/${id}`);                
+    return data;           
     }
     catch (error) {
-       return 'error'
+      return 'error';
     } 
-  }  ,
-  async getLocation(){
+  } ,
+  async getLocation(page:string | string[] | undefined){
     try {           
-        const {data}= await axios.get<IHeroData>(`/location`)                
-    return data           
+        const {data}= await axios.get<IHeroData>(`/location/?page=${page}`);                
+    return data;           
     }
     catch (error) {
-       return 'error'
+      return 'error';
     } 
   },
 
-  async getByIdLocations(id:number){
+  async getByIdLocations(id:string | string[] | undefined){
     try {           
-        const {data}= await axios.get<IHeroData>(`/location/${id}`)                
-    return data           
+      const {data}= await axios.get<IHeroData>(`/location/${id}`);                
+    return data;           
     }
     catch (error) {
-       return 'error'
-    } 
-  }  ,
+      return 'error';
+    }
+  },
   
-  async getEposodes(){
+  async getEposodes(page:string | string[] | undefined){
     try {           
-        const {data}= await axios.get<IHeroData>(`/episode`)                
-    return data           
+      const {data}= await axios.get<IHeroData>(`/episode/?page=${page}`);                
+    return data;           
+    }
+    catch (error){
+      return 'error';
+    }
+  },
+  
+  async getByIdEpisodes(id:string | string[] | undefined){
+    try {           
+      const {data}= await axios.get<IHeroData>(`/episode/${id}`);                
+    return data;           
     }
     catch (error) {
-       return 'error'
+      return 'error';
     } 
-  }    
-
-}
+  },
+};

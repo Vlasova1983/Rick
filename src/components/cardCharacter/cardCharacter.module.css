@@ -8,11 +8,11 @@
     gap:52px; 
     color:var(--text-card);
     text-align: left;
-    font-family: "Roboto",sans-serif; 
+    font-family: Roboto,sans-serif; 
     margin-top: 32px;      
 }
 
-.textConteiner{
+.text{
     width: 100%;
 }
 
@@ -28,26 +28,28 @@
     line-height: 24px;
     margin-bottom: 16px; 
 }
+
 .property{
    color:var(--text-color);
    font-weight: 700;
     font-size:16px;
     line-height: 24px; 
-    padding: 10px 16px 0 16px;
+    padding: 10px 16px 0;
 }
+
 .context{
     padding: 10px 16px;
     border-bottom: 1px solid  var(--text-card); 
 }
 
-@media  (min-width:768px) and (max-width:1279px) {
+@media  (width >=768px) and (width <=1279px) {
     .card{
         flex-wrap:nowrap;
     }
    
 }
 
-@media  (min-width:1280px){
+@media  (width >=1280px){
     .card{
         flex-wrap:nowrap;
         justify-content: space-between;

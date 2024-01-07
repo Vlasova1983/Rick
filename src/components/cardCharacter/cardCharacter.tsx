@@ -1,11 +1,11 @@
-import { FC } from "react"
-import Image from "next/image"
-import { IHero } from "@/interfaces/hero.interface"
-import styles from "./cardCharacter.module.css"
+import { FC } from "react";
+import Image from "next/image";
+import { IHero } from "@/interfaces/hero.interface";
+import styles from "./cardCharacter.module.css";
 
 const CardCharacter:FC< {item: IHero}> =({item})=>{ 
-console.log(item.episode)
-console.log(item.location)
+console.log(item.episode);
+console.log(item.location);
 
   return (
         <>
@@ -19,7 +19,7 @@ console.log(item.location)
             />
             <h2 className={styles.name}>{item.name}</h2>
             < div className={styles.card}>        
-                <div className={styles.textConteiner}>
+                <div className={styles.text}>
                     <h3 className={styles.title}>Informations</h3>
                     <p className={styles.property}>Gender</p>                
                     <p className={styles.context}>{item.gender}</p>
@@ -34,14 +34,13 @@ console.log(item.location)
                     <p className={styles.property}>Location</p>                
                     <p className={styles.context}>{item.location.name}</p>            
                 </div>
-                <div className={styles.textConteiner}>
-                    <h3 className={styles.title}>Episodes</h3>
-                                
+                <div className={styles.text}>
+                    <h3 className={styles.title}>Episodes</h3>                                
                 </div>          
             </div >    
         </>    
-    )
-}
+    );
+};
 
 
-export default CardCharacter
+export default CardCharacter;

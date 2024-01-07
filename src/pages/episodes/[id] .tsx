@@ -4,36 +4,38 @@ import { NextPage,GetServerSideProps,GetServerSidePropsContext} from "next";
 import { IHero,IHeroData} from '@/interfaces/hero.interface';
 import { HeroService } from '@/services/characters.service';
 import { useRouter } from "next/router";
-import CardLocation from "@/components/cardLocation/cardLocation";
+import CardEpisodes from "@/components/cardEpicodes/cardEpisodes";
 import { ParsedUrlQuery } from "querystring";
-import styles from "./locations.module.css";
+import styles from "./episodes.module.css";
 
 
-const LocationsPage:NextPage<{ results:IHero }>=({results})=>{
-    const { replace } = useRouter();     
+const EpisodesPage:NextPage<{ results:IHero }>=({results})=>{
+    console.log(results);
+    const { replace } = useRouter();        
     return(
         <>
             <Head>
-                <title>Locations</title>
+                <title>Episodes</title>
             </Head>            
             <Layout>
                 <div className={styles.conteiner} >
-                    <button  className={styles.back} onClick={()=>replace('/locations')}>GO BACK</button>                   
-                </div>              
-                <CardLocation results={results.residents}/>                 
+                    <button  className={styles.back} onClick={()=>replace('/episodes')}>GO BACK</button>                   
+                </div>
+                <CardEpisodes item={results}/>
             </Layout>
         </>
-    );    
+    ) ;   
 };
 
+
+
 export const getServerSideProps:GetServerSideProps<{ results: string | IHeroData }>= async(context:GetServerSidePropsContext<ParsedUrlQuery>)=>{
-    const { query } = context;    
-    const results = await HeroService.getByIdLocations(query.id);
+    const { query } = context; 
+    const results = await HeroService.getByIdEpisodes(query.id);
     return {
         props:{results}
     };
-}; 
- 
+};
 
 
-export default LocationsPage;
+export default EpisodesPage;

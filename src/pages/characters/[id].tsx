@@ -1,15 +1,15 @@
 import Layout from "@/components/layout/layout";
 import Head from "next/head";
-import { NextPage, GetServerSideProps} from "next";
-import { IHero, IHeroData } from '@/interfaces/hero.interface';
+import { NextPage, GetServerSideProps,GetServerSidePropsContext} from "next";
+import { IHero, IHeroData} from '@/interfaces/hero.interface';
 import { HeroService } from '@/services/characters.service';
 import { useRouter } from "next/router";
 import CardCharacter from "@/components/cardCharacter/cardCharacter";
-import styles from "./character.module.css"
+import { ParsedUrlQuery } from "querystring";
+import styles from "./character.module.css";
 
 const CharacterPage:NextPage<{ results:IHero }>=({results})=>{
-    const { replace } = useRouter();  
-    console.log(results)
+    const { replace } = useRouter();      
     return(
         <>
             <Head>
@@ -17,24 +17,23 @@ const CharacterPage:NextPage<{ results:IHero }>=({results})=>{
             </Head>            
             <Layout>
                 <div className={styles.conteiner} >
-                    <button  className={styles.back} onClick={()=>replace('/')}>GO BACK</button>                   
+                    <button  className={styles.back} onClick={()=>replace('/characters')}>GO BACK</button>                   
                 </div>
                 <CardCharacter item={results}/>
             </Layout>
         </>
-    )    
-}
+    );    
+};
 
-export const getServerSideProps:GetServerSideProps<{ results: string | IHeroData }>= async(context: any)=>{
+export const getServerSideProps:GetServerSideProps<{ results: string | IHeroData }>= async(context:GetServerSidePropsContext<ParsedUrlQuery>)=>{
     const { query } = context;    
-    const results = await HeroService.getById(Number(query.id))
+    const results = await HeroService.getById(query.id);
     return {
         props:{results}
-    }
-}
+    };
+};
 
-
-export default CharacterPage
+export default CharacterPage;
 
 
 

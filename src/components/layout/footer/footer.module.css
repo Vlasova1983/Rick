@@ -3,34 +3,34 @@
     justify-content: space-around;
     text-align: center;
     align-items: center;
-    font-family: 'Karla',sans-serif;    
+    font-family: Karla,sans-serif;    
     font-weight: 700;
     font-size: 18px;
     line-height: 21px; 
     background: var(--background);     
     border-top: 2px solid var(--text-akcent);
-    box-shadow: -2px 0px 8px 2px #0000001A;
+    box-shadow: -2px 0 8px 2px #0000001A;
 }
 
-.footerText{
+.text{
     padding: 20px 24px;
 }
 
 
-@media  (min-width:768px) and (max-width:1279px) {
+@media  (width >=768px) and (width <=1279px) {
     .footer{            
         position:fixed;
-        left:0px;
-        bottom:0px;    
+        left:0;
+        bottom:0;    
         width:100%;    
     }   
 }
 
-@media  (min-width:1280px){
+@media  (width >=1280px){
     .footer{            
         position:fixed;
-        left:0px;
-        bottom:0px;    
+        left:0;
+        bottom:0;    
         width:100%;    
     }   
 }

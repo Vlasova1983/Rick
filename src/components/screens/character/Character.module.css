@@ -5,20 +5,28 @@
     margin-top: 48px;
     width: 100%;
     justify-content: center;
-    
+    margin-bottom: 32px;    
 }
 
 
-@media  (min-width:768px) and (max-width:1279px) {
+@media  (width >=768px) and (width <=1279px) {
     .images{
         width: 600px;
         height: 200px;
     }
+
+    .wrapper{        
+        margin-bottom: 48px;    
+    }
 }
 
-@media  (min-width:1280px){
+@media  (width >=1280px){
     .images{
         width: 600px;
         height: 200px;
+    }
+
+    .wrapper{        
+        margin-bottom: 48px;    
     }
 }

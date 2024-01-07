@@ -1,14 +1,15 @@
-import { FC } from "react"
-import Image from 'next/image'
-import {  IHeroData } from "@/interfaces/hero.interface"
-import Layout from "@/components/layout/layout"
-import Link from "next/link"
-import Card from "@/components/card/card"
-import styles from "./locations.module.css"
+import { FC } from "react";
+import Image from 'next/image';
+import {  IHeroData, f1 } from "@/interfaces/hero.interface";
+import Link from "next/link";
+import Card from "@/components/card/card";
+import LoadMore from "@/components/loadMore/loadMore";
+import styles from "./locations.module.css";
 
-const Location:FC<{ results:IHeroData }> =({results})=>{   
+const Locations:FC<{results:IHeroData,setPage:f1}> =({results,setPage})=>{ 
+  
   return (
-    <Layout> 
+    <> 
       <Image
         className={styles.images}
         src="./locations.svg"
@@ -24,8 +25,8 @@ const Location:FC<{ results:IHeroData }> =({results})=>{
           <Card  item={event}/>           
         </Link>))}   
       </div>        
-      
-    </Layout>
-  )
-}
-export default Location
+      <LoadMore setPage={setPage}/>
+    </>
+  );
+};
+export default Locations;

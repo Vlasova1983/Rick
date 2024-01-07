@@ -1,0 +1,13 @@
+.button{
+    color:var(--text-button);   
+    padding: 10px 16px;     
+    border-radius: 4px;
+    background-color: var(--background-button);     
+    box-shadow: 0 1px 18px 0 #0000001F; 
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover,.button:focus{
+    box-shadow: 0 3px 5px 0 #0003;
+}
+

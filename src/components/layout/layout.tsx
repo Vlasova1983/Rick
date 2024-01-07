@@ -1,16 +1,17 @@
-import {FC,PropsWithChildren} from 'react'
-import Header from './header/header'
-import Footer from './footer/footer'
-import styles from "./layout.module.css"
+import {FC,PropsWithChildren} from 'react';
+import Header from './header/header';
+import Footer from './footer/footer';
+import styles from "./layout.module.css";
+
 
 const Layout:FC<PropsWithChildren<unknown>>=({children})=>{
     return (
         <>
             <Header/>      
             <main className={styles.main}>{children}</main>
-            <Footer/>
-        </>
-    )
-}
+            <Footer/>    
+        </>      
+    );
+};
 
-export default Layout
+export default Layout;

@@ -1,7 +1,7 @@
-import { FC } from "react"
-import Image from 'next/image'
-import Link from "next/link"
-import styles from "./burger.module.css"
+import { FC } from "react";
+import Image from 'next/image';
+import Link from "next/link";
+import styles from "./burger.module.css";
 
 const Burger:FC=()=>{
     return ( 
@@ -13,9 +13,8 @@ const Burger:FC=()=>{
                 height={24}
                 priority
             />   
-        </Link>    
-        
-    )      
-}
+        </Link>        
+    );      
+};
 
-export default Burger
+export default Burger;

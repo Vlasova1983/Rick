@@ -1,65 +1,45 @@
-// import Image from "next/image"
-import { IHero } from "@/interfaces/hero.interface"
-import { FC } from "react";
+import { IHero} from "@/interfaces/hero.interface";
+import { NextPage } from 'next';
+import Image from "next/image";
+import styles from "./cardLocation.module.css";
 
-import styles from "./cardLocation.module.css"
+const CardLocation:NextPage<{ results:string[] }>=({results})=>{
 
-const CardLocation:FC< {item: IHero}>=({item})=>{  
-  const residents:string[]=item.residents;
-  const residentsId:number[]=[];
-  for (let i=0; i<item.residents.length;i+=1){
-    residentsId.push(Number(residents[i].slice(-1)))  
-  } 
-
+  console.log(results);
+  const cardsHtml:IHero[]=[];
+  // for(let i=0;i<results.length;i+=1){  
+  //   fetch(`${results[i]}`) 
+  //     .then((response)=> {return response.json();})
+  //     .then((data:IHero)=>{cardsHtml.push(data);}     
+  //   );
+  // }
   
-    fetch(`https://rickandmortyapi.com/api/character/${residentsId}`,) 
-      .then((response)=> {return response.json()})
-      .then((data:IHero[])=>
-        {       
-          const residentsHtml=document.getElementById('residents')  as HTMLElement;
-          const cardsHtml:string[]=[];          
-          data.map((item:IHero)=>{
-            console.log(item)
-            cardsHtml.push(
-            `<div style="width:240px;  
-              height: 244px;
-                         
-              border-radius: 4px;
-              box-shadow: 0px 2px 4px 0px #00000024; 
-              transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);"
-              >
-              <img  src=${item.image} alt="resident" loading="lazy" style="width:240px;  
-              height: 168px;
-              border-top-left-radius: 4px;
-              border-top-right-radius: 4px;
-              ">
-                <div  style=" display: flex;
-                flex-direction: column;    
-                text-align: left;    
-                padding: 12px 16px;
-                ">            
-                  <h3> ${item.name}</h3>
-                  <p>${item.species}</p> 
-                </div >              
-            </div>`)});      
-          residentsHtml.insertAdjacentHTML("afterbegin",cardsHtml.join(""));
-        })
-
-        console.log('render')
-   
-    
-
   return (
-    <>
+    <>    
       <h2 className={styles.title}>Residents</h2>
-      <div className={styles.wrapp} id={'residents'}></div>
+      <div className={styles.wrapper}>
+        {cardsHtml.map(item=>          
+        < div className={styles.card}>
+          <Image
+              className={styles.images}     
+              src={item.image}
+              alt={item.name}          
+              width={312}
+              height={232}  
+              priority         
+          />
+          <div className={styles.text}>
+            <h3>{item.name}</h3>
+            <p>{item.species}</p>
+          </div>      
+        </div >)}    
+      </div> 
+    </>  
+  ) ;   
+};  
 
-    </>    
-  )
-
-  
-}
+export default CardLocation;
 
 
-export default CardLocation
+
 

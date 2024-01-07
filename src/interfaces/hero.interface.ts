@@ -34,6 +34,8 @@ export interface IHeroData{
 }
 
 export let key:number;
+
+export type f1 = () => void;
   
 
 
