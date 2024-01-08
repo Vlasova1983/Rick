@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import { IHero } from "@/interfaces/hero.interface";
+import { IHero } from "@/interfaces/interface";
 import styles from "./cardCharacter.module.css";
 
 const CardCharacter:FC< {item: IHero}> =({item})=>{ 

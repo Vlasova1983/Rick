@@ -7,9 +7,9 @@ const Navigetion:FC=()=>{
     const {pathname}=useRouter();
     return (            
         <nav className={styles.conteiner}>
-            <Link className={pathname==='/characters'?styles.active:styles.link} href={'/characters'}>Character</Link>
-            <Link  className={pathname==='/locations'?styles.active:styles.link} href={'/locations'}>Locations</Link>
-            <Link  className={pathname==='/episodes'?styles.active:styles.link} href={'/episodes'}>Episodes</Link> 
+            <Link className={pathname==='/characters'?styles.active:styles.link} href={{pathname:`/characters`,query:{page:1,name:'rich'}}}>Character</Link>
+            <Link  className={pathname==='/locations'?styles.active:styles.link} href={{pathname:`/locations`,query:{page:1,name:'earth'}}}>Locations</Link>
+            <Link  className={pathname==='/episodes'?styles.active:styles.link} href={{pathname:`/episodes`,query:{page:1,name:'pilot'}}}>Episodes</Link> 
         </nav>                  
        
     );      

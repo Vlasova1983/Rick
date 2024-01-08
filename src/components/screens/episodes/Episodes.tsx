@@ -1,13 +1,15 @@
 import { FC } from "react";
-import { IHeroData, f1 } from "@/interfaces/hero.interface";
+import { useRouter } from 'next/router';
 import Link from "next/link";
-import Card from "@/components/card/card";
 import Image from "next/image";
+import { IHeroData, f1,f2 } from "@/interfaces/interface";
+import Card from "@/components/card/card";
+import  Input  from "@/components/inputSearch/inputSearh";
 import LoadMore from "@/components/loadMore/loadMore";
 import styles from "./Episodes.module.css";
 
-const Episodes:FC<{results:IHeroData,setPage:f1 }> =({results,setPage})=>{
-  
+const Episodes:FC<{results:IHeroData,setPage:f1,setValueName:f2 }> =({results,setPage,setValueName})=>{
+  const {query}=useRouter();
   return (
     <> 
       <Image
@@ -18,10 +20,12 @@ const Episodes:FC<{results:IHeroData,setPage:f1 }> =({results,setPage})=>{
         height={135}
         priority
       />  
-
+      <div className={styles.wrapper}>
+        <Input setValueName={setValueName}/>
+      </div>  
       <div className={styles.wrapper}>
           {results.results.map(event=>(
-          <Link className={styles.link} key={event.id} href={`/episodes/${event.id}`}> 
+          <Link className={styles.link} key={event.id} href={{pathname:`/episodes/${event.id}`,query:{page:query.page,name:query.name}}}> 
             <Card  item={event}/>           
           </Link>))}   
       </div>        

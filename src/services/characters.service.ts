@@ -1,6 +1,4 @@
-import { 
-  // IHero, 
-  IHeroData } from "@/interfaces/hero.interface";
+import {IHeroData,query } from "@/interfaces/interface";
 import axios from "axios";
 
 const API_URL=process.env.NEXT_PUBLIC_DOMAIN;
@@ -69,9 +67,9 @@ axios.defaults.baseURL = API_URL;
 
 
 export const HeroService = {
-  async getAll(page:string | string[] | undefined){       
+  async getAll(page:query,name:query){       
     try {           
-      const {data}= await axios.get<IHeroData>(`/character/?page=${page}`);               
+      const {data}= await axios.get<IHeroData>(`/character/?page=${page}&name=${name}`);               
     return data;             
     }
     catch (error) {
@@ -89,7 +87,7 @@ export const HeroService = {
     }
   } ,
     
-  async getById(id:string | string[] | undefined){
+  async getById(id:query){
     try {           
       const {data}= await axios.get<IHeroData>(`/character/${id}`);                
     return data;           
@@ -98,9 +96,9 @@ export const HeroService = {
       return 'error';
     } 
   } ,
-  async getLocation(page:string | string[] | undefined){
+  async getLocation(page:query,name:query){
     try {           
-        const {data}= await axios.get<IHeroData>(`/location/?page=${page}`);                
+        const {data}= await axios.get<IHeroData>(`/location/?page=${page}&name=${name}`);                
     return data;           
     }
     catch (error) {
@@ -108,7 +106,7 @@ export const HeroService = {
     } 
   },
 
-  async getByIdLocations(id:string | string[] | undefined){
+  async getByIdLocations(id:query){
     try {           
       const {data}= await axios.get<IHeroData>(`/location/${id}`);                
     return data;           
@@ -118,9 +116,9 @@ export const HeroService = {
     }
   },
   
-  async getEposodes(page:string | string[] | undefined){
+  async getEposodes(page:query,name:query){
     try {           
-      const {data}= await axios.get<IHeroData>(`/episode/?page=${page}`);                
+      const {data}= await axios.get<IHeroData>(`/episode/?page=${page}&name=${name}`);                
     return data;           
     }
     catch (error){
@@ -128,7 +126,7 @@ export const HeroService = {
     }
   },
   
-  async getByIdEpisodes(id:string | string[] | undefined){
+  async getByIdEpisodes(id:query){
     try {           
       const {data}= await axios.get<IHeroData>(`/episode/${id}`);                
     return data;           

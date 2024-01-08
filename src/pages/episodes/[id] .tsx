@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/layout";
 import Head from "next/head";
 import { NextPage,GetServerSideProps,GetServerSidePropsContext} from "next";
-import { IHero,IHeroData} from '@/interfaces/hero.interface';
+import { IHero,IHeroData} from '@/interfaces/interface';
 import { HeroService } from '@/services/characters.service';
 import { useRouter } from "next/router";
 import CardEpisodes from "@/components/cardEpicodes/cardEpisodes";
@@ -11,7 +11,8 @@ import styles from "./episodes.module.css";
 
 const EpisodesPage:NextPage<{ results:IHero }>=({results})=>{
     console.log(results);
-    const { replace } = useRouter();        
+    const {replace} = useRouter(); 
+    const {query}=useRouter();        
     return(
         <>
             <Head>
@@ -19,7 +20,7 @@ const EpisodesPage:NextPage<{ results:IHero }>=({results})=>{
             </Head>            
             <Layout>
                 <div className={styles.conteiner} >
-                    <button  className={styles.back} onClick={()=>replace('/episodes')}>GO BACK</button>                   
+                    <button  className={styles.back} onClick={()=>replace({pathname:`/episodes`,query:{page:query.page,name:query.name}})}>GO BACK</button>                   
                 </div>
                 <CardEpisodes item={results}/>
             </Layout>

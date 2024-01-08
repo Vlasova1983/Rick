@@ -1,4 +1,4 @@
-import { IHero} from "@/interfaces/hero.interface";
+import { IHero} from "@/interfaces/interface";
 import { NextPage } from 'next';
 import Image from "next/image";
 import styles from "./cardLocation.module.css";

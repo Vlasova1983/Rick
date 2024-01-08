@@ -1,4 +1,4 @@
-import { IHero } from "@/interfaces/hero.interface";
+import { IHero } from "@/interfaces/interface";
 import { FC } from "react";
 import styles from "./cardEpisodes.module.css";
 
