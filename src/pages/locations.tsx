@@ -6,8 +6,9 @@ import {  IHeroData } from '@/interfaces/interface';
 import { HeroService } from '@/services/characters.service';
 import Loader from '@/components/loader/loader';
 import Head from "next/head";
-import Locations from '@/components/screens/locations/Locations';
+// import Locations from '@/components/screens/locations/Locations';
 import Layout from '@/components/layout/layout';
+import Pages from '@/components/screens/pages/pages';
 
 const LocationsPage:NextPage<{ results:IHeroData }>=({results})=>{
   const {query}=useRouter(); 
@@ -38,7 +39,7 @@ const LocationsPage:NextPage<{ results:IHeroData }>=({results})=>{
       <Head>
         <title>Locations</title>
       </Head>
-      <Locations results={results} setPage={setPage} setValueName={setValueName}/>
+      <Pages results={results} setPage={setPage} setValueName={setValueName}/>
       {!results && <Loader />} 
     </Layout>  
   );

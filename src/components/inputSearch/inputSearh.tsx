@@ -19,7 +19,7 @@ const Input:FC<{setValueName:f2}>=({setValueName})=>{
         onChange={e=>setValue(e.target.value)}
       />
       <button 
-        onClick={()=>{setValueName(value)}}  
+        onClick={()=>setValueName(value)}  
         className={styles.button}>
           <Image            
         src="./leading.svg"

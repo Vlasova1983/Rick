@@ -4,10 +4,11 @@ import { useRouter } from 'next/router';
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import {IHeroData} from '@/interfaces/interface';
-import Character from '@/components/screens/character/Character';
+// import Character from '@/components/screens/character/Character';
 import { HeroService } from '@/services/characters.service';
 import Loader from '@/components/loader/loader';
 import Layout from '@/components/layout/layout';
+import Pages from '@/components/screens/pages/pages';
 
 
 const  CharacterPage:NextPage<{ results:IHeroData}>=({results}) =>{ 
@@ -39,7 +40,7 @@ const  CharacterPage:NextPage<{ results:IHeroData}>=({results}) =>{
       <Head>
         <title>Character</title>
       </Head>    
-      <Character results={results} setPage={setPage} setValueName={setValueName}/>         
+      <Pages results={results} setPage={setPage} setValueName={setValueName}/>         
       {!results && <Loader/>} 
     </Layout>
   );  

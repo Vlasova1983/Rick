@@ -1,19 +1,32 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Image from 'next/image';
-import Link from "next/link";
+import NavigetionMobile from "../navigation/navigationMobile";
 import styles from "./burger.module.css";
 
 const Burger:FC=()=>{
+ const[isActive,setIsActive]=useState<boolean>(false);
     return ( 
-        <Link  className={styles.burger} href={'/'}>        
-            <Image
+        <button  className={styles.burger} onClick={()=>setIsActive(!isActive)}>        
+            {!isActive &&<Image
                 src="/menu_24px.svg"
                 alt="menu_24px"           
                 width={24}
                 height={24}
                 priority
-            />   
-        </Link>        
+            />}
+            {isActive && 
+            <div>           
+                <Image
+                    src="/close_24px.svg"
+                    alt="menu_24px"           
+                    width={24}
+                    height={24}
+                    priority
+                />
+                <NavigetionMobile/>           
+            </div>            
+            }
+        </button>        
     );      
 };
 

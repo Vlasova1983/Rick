@@ -1,11 +1,6 @@
-.wrapper{
-    position: relative; 
-}
-
-.input{
-    
-    width: 206px;   
-    padding: 16px 0 16px 40px;
+.select{    
+    width: 240px;   
+    padding: 16px;
     border-radius: 8px;
     border: 1px solid #00000080;
     color: var(--text-akcent); 
@@ -16,29 +11,21 @@
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0em;
-    text-align: left; 
+    text-align: left;  
 }
 
-.button{
-    position: absolute;
-    background: none;
-    cursor: pointer;
-    top:15px;
-    left: 15px;
-}
-
-.input:hover,.input:focus{
+.select:hover,.select:focus{
     box-shadow: 0 1px 5px 0 #0003; 
 }
 
 @media  (width >=768px) and (width <=1279px) {
-    .input{ 
-        width: 262px;        
+    .select{ 
+        width: 312px;        
     }   
 }
 
 @media  (width >=1280px){
-    .input{ 
-        width: 262px;        
+    .select{ 
+        width: 312px;        
     }
 }

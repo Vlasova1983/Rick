@@ -7,7 +7,8 @@ import Loader from '@/components/loader/loader';
 import { ParsedUrlQuery } from "querystring";
 import Head from 'next/head';
 import Layout from '@/components/layout/layout';
-import Episodes from '@/components/screens/episodes/Episodes';
+// import Episodes from '@/components/screens/episodes/Episodes';
+import Pages from '@/components/screens/pages/pages';
 
 
 const EpisodesPage:NextPage<{ results:IHeroData }>=({results})=>{
@@ -39,7 +40,7 @@ const EpisodesPage:NextPage<{ results:IHeroData }>=({results})=>{
       <Head>
         <title>Character</title>
       </Head>      
-      <Episodes results={results} setPage={setPage} setValueName={setValueName}/>
+      <Pages results={results} setPage={setPage} setValueName={setValueName}/>
       {!results && <Loader/>} 
     </Layout>
   );  

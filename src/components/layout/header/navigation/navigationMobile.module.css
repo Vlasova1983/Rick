@@ -1,0 +1,33 @@
+.conteiner{ 
+    position: absolute;   
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background);
+    padding-top: 48px;
+    gap: 48px;
+    top:60px;
+    left: 0;   
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;    
+}
+
+.link{
+    color:var(--text-color);
+    font-family: 'Karla',sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: center;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link:hover,.link:focus{
+    color:var(--text-akcent);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: center;
+}
