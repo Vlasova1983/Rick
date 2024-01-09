@@ -10,17 +10,17 @@
 
 
 @media  (width >=768px) and (width <=1279px) {
-    .images_characters{
+    .imgcharacters{
         width: 600px;
         height: 200px;
     }
     
-    .images_locations{
+    .imglocations{
         width: 326px;
         height: 202px;
     }
 
-    .images_episodes{
+    .imgepisodes{
         width: 270px;
         height: 210px;
     }
@@ -31,18 +31,21 @@
 }
 
 @media  (width >=1280px){
-    .images_characters{
+    .imgcharacters{
         width: 600px;
         height: 200px;
     }
-    .images_locations{
+
+    .imglocations{
         width: 326px;
         height: 202px;
     }
-    .images_episodes{
+
+    .imgepisodes{
         width: 270px;
         height: 210px;
     }
+
     .wrapper{        
         margin-bottom: 48px;    
     }

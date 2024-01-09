@@ -6,11 +6,11 @@
     color: var(--text-akcent); 
     outline-color:var(--text-akcent) ;   
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: 'Roboto',sans-serif;
+    font-family: Roboto,sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 19px;
-    letter-spacing: 0em;
+    letter-spacing: 0;
     text-align: left;  
 }
 

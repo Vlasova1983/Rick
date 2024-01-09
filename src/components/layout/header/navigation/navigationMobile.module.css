@@ -14,11 +14,11 @@
 
 .link{
     color:var(--text-color);
-    font-family: 'Karla',sans-serif;
+    font-family: Karla,sans-serif;
     font-size: 24px;
     font-weight: 700;
     line-height: 28px;
-    letter-spacing: 0em;
+    letter-spacing: 0;
     text-align: center;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -28,6 +28,6 @@
     font-size: 24px;
     font-weight: 700;
     line-height: 28px;
-    letter-spacing: 0em;
+    letter-spacing: 0;
     text-align: center;
 }

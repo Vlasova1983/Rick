@@ -17,7 +17,7 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
     <> 
         {pathname===`/characters`&&
         <Image 
-            className={styles.images_characters}       
+            className={styles.imgcharacters}       
             src="./characters.svg"
             alt="characters"           
             width={312}
@@ -27,7 +27,7 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
         }
         {pathname==='/locations'&&
         <Image
-            className={styles.images_locations}
+            className={styles.imglocations}
             src="./locations.svg"
             alt="locations"           
             width={220}
@@ -36,7 +36,7 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
         /> }
         {pathname===`/episodes`&& 
         <Image
-            className={styles.images_episides}
+            className={styles.imgepisides}
             src="./episode.svg"
             alt="episode"           
             width={220}
