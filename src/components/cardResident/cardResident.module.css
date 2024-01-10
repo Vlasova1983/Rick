@@ -7,7 +7,18 @@
     justify-content: center;    
 }
 
-.title{
+.h1{
+    font-weight: 400;
+    font-size:36px;
+    line-height: 42px;
+    margin-bottom: 16px; 
+    color:var(--text-color);
+    text-align: center;
+    margin-top: -30px;
+   
+}
+
+.h2{
     font-weight: 500;
     font-size:20px;
     line-height: 24px;
@@ -15,6 +26,27 @@
     color:var(--text-card);
     text-align: left;
     margin-top: 80px;
+}
+
+.conteinertext{
+    display: flex;
+    gap:220px ;
+    justify-content: center;
+    font-weight: 700;
+    font-size:16px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.conteinertext p{
+    padding: 0;
+}
+
+.content{
+    font-weight: 400;
+    font-size:14px;
+    line-height: 20px;
+    color:var(--text-card);  
 }
 
 .card{  

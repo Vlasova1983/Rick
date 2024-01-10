@@ -10,7 +10,7 @@ import styles from "./pages.module.css";
 import Select from "@/components/select/select";
 
 
-const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPage,setValueName})=>{
+const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPage,setValueName})=>{ 
   const {query}=useRouter();
   const { pathname } = useRouter(); 
   return (
@@ -46,16 +46,26 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
         {pathname===`/characters`&&
             <div className={styles.wrapper}>
                 <Input setValueName={setValueName}/>
-                <Select name={'species'} array={['Species','Human']}/>
-                <Select name={'gender'} array={['Gender','female','male','genderless','unknown']}/>
-                <Select name={'status'} array={['Status','alive','dead','unknown']}/>
+                <div className={styles.select}>
+                    <Select name={'species'} array={['Species','Human']}/>
+                </div>
+                <div className={styles.select}>
+                    <Select name={'gender'} array={['Gender','female','male','genderless','unknown']}/>
+                </div>
+                <div className={styles.select}>
+                    <Select name={'status'} array={['Status','alive','dead','unknown']}/>
+                </div>               
             </div>
         }
         {pathname===`/locations`&&
             <div className={styles.wrapper}>
                 <Input setValueName={setValueName}/>
-                <Select name={'type'} array={['type','Planet']}/>
-                <Select name={'dimension'} array={['Dimension','Dimension C-137']}/>                
+                <div className={styles.select}>
+                    <Select name={'type'} array={['type','Planet']}/>
+                </div>
+                <div className={styles.select}>
+                    <Select name={'dimension'} array={['Dimension','Dimension C-137']}/>
+                </div>                              
             </div>
         }        
         {pathname===`/episodes`&&

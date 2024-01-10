@@ -14,8 +14,10 @@ export interface IHero{
     url: string
     },
   image: string,
+  dimension:string,
   episode:string [],
-  residents:string [],
+  characters:string [],
+  residents:string [],  
   url: string,
   created: string
   air_date:string      

@@ -7,8 +7,7 @@ import Loader from '@/components/loader/loader';
 import { ParsedUrlQuery } from "querystring";
 import Head from 'next/head';
 import Layout from '@/components/layout/layout';
-// import Episodes from '@/components/screens/episodes/Episodes';
-import Pages from '@/components/screens/pages/pages';
+import Pages from '@/components/pages/pages';
 
 
 const EpisodesPage:NextPage<{ results:IHeroData }>=({results})=>{

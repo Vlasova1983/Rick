@@ -4,12 +4,10 @@ import { useRouter } from 'next/router';
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import {IHeroData} from '@/interfaces/interface';
-// import Character from '@/components/screens/character/Character';
 import { HeroService } from '@/services/characters.service';
 import Loader from '@/components/loader/loader';
 import Layout from '@/components/layout/layout';
-import Pages from '@/components/screens/pages/pages';
-
+import Pages from '@/components/pages/pages';
 
 const  CharacterPage:NextPage<{ results:IHeroData}>=({results}) =>{ 
   const {query}=useRouter();  

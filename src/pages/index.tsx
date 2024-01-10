@@ -9,7 +9,7 @@ const  HomePage:NextPage=() =>{
       pathname:'/characters',
       query:{
         page:1,
-        name:'rick'
+        name:''
       }
     });
   },[]); 

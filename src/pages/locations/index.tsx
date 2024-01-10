@@ -6,9 +6,8 @@ import {  IHeroData } from '@/interfaces/interface';
 import { HeroService } from '@/services/characters.service';
 import Loader from '@/components/loader/loader';
 import Head from "next/head";
-// import Locations from '@/components/screens/locations/Locations';
 import Layout from '@/components/layout/layout';
-import Pages from '@/components/screens/pages/pages';
+import Pages from '@/components/pages/pages';
 
 const LocationsPage:NextPage<{ results:IHeroData }>=({results})=>{
   const {query}=useRouter(); 

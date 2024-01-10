@@ -4,14 +4,16 @@ import { NextPage,GetServerSideProps,GetServerSidePropsContext} from "next";
 import { IHero,IHeroData} from '@/interfaces/interface';
 import { HeroService } from '@/services/characters.service';
 import { useRouter } from "next/router";
-import CardLocation from "@/components/cardLocation/cardLocation";
+import CardResident from "@/components/cardResident/cardResident";
 import { ParsedUrlQuery } from "querystring";
 import styles from "./locations.module.css";
 
 
-const LocationsPage:NextPage<{ results:IHero }>=({results})=>{
+
+
+const LocationsPage:NextPage<{ results:IHero}>=({results})=>{
     const { replace } = useRouter();
-    const {query}=useRouter();       
+    const {query}=useRouter();   
     return(
         <>
             <Head>
@@ -21,7 +23,7 @@ const LocationsPage:NextPage<{ results:IHero }>=({results})=>{
                 <div className={styles.conteiner} >
                     <button  className={styles.back} onClick={()=>replace({pathname:`/locations`,query:{page:query.page,name:query.name}})}>GO BACK</button>                   
                 </div>              
-                <CardLocation results={results.residents}/>                 
+                <CardResident residents={results.residents} results={results}/>                 
             </Layout>
         </>
     );    
@@ -34,7 +36,5 @@ export const getServerSideProps:GetServerSideProps<{ results: string | IHeroData
         props:{results}
     };
 }; 
- 
-
 
 export default LocationsPage;

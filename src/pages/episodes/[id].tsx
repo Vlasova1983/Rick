@@ -4,13 +4,13 @@ import { NextPage,GetServerSideProps,GetServerSidePropsContext} from "next";
 import { IHero,IHeroData} from '@/interfaces/interface';
 import { HeroService } from '@/services/characters.service';
 import { useRouter } from "next/router";
-import CardEpisodes from "@/components/cardEpicodes/cardEpisodes";
 import { ParsedUrlQuery } from "querystring";
+import CardResident from "@/components/cardResident/cardResident";
 import styles from "./episodes.module.css";
 
 
-const EpisodesPage:NextPage<{ results:IHero }>=({results})=>{
-    console.log(results);
+
+const EpisodesPage:NextPage<{results:IHero}>=({results})=>{ 
     const {replace} = useRouter(); 
     const {query}=useRouter();        
     return(
@@ -22,7 +22,7 @@ const EpisodesPage:NextPage<{ results:IHero }>=({results})=>{
                 <div className={styles.conteiner} >
                     <button  className={styles.back} onClick={()=>replace({pathname:`/episodes`,query:{page:query.page,name:query.name}})}>GO BACK</button>                   
                 </div>
-                <CardEpisodes item={results}/>
+                <CardResident residents={results.characters} results={results}/>
             </Layout>
         </>
     ) ;   

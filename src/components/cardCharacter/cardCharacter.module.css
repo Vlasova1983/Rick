@@ -42,6 +42,31 @@
     border-bottom: 1px solid  var(--text-card); 
 }
 
+.wrapp{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid  var(--text-card); 
+    padding: 16px;
+    gap: 5px;
+}
+
+.h4{
+    color: var(--text-color);    
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+}
+
+.wrapp p{
+    padding: 0;  
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    text-align: left;
+}
+
 @media  (width >=768px) and (width <=1279px) {
     .card{
         flex-wrap:nowrap;

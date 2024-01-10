@@ -7,26 +7,54 @@
     justify-content: center;
     margin-bottom: 32px; 
 }
-
+.select{
+    display: none;
+}
 
 @media  (width >=768px) and (width <=1279px) {
-    .images{
+    .imgcharacters{
+        width: 600px;
+        height: 200px;
+    }
+    
+    .imglocations{
         width: 326px;
         height: 202px;
     }
 
+    .imgepisodes{
+        width: 270px;
+        height: 210px;
+    }
+
     .wrapper{        
         margin-bottom: 48px;    
+    }
+    .select{
+        display: block;
     }
 }
 
 @media  (width >=1280px){
-    .images{
+    .imgcharacters{
+        width: 600px;
+        height: 200px;
+    }
+
+    .imglocations{
         width: 326px;
         height: 202px;
     }
 
+    .imgepisodes{
+        width: 270px;
+        height: 210px;
+    }
+
     .wrapper{        
         margin-bottom: 48px;    
+    }
+    .select{
+        display: block;
     }
 }
