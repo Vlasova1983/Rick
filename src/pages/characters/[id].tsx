@@ -1,8 +1,8 @@
 import Layout from "@/components/layout/layout";
 import Head from "next/head";
 import { NextPage, GetServerSideProps,GetServerSidePropsContext} from "next";
-import { IHero, IHeroData} from '@/interfaces/interface';
-import { HeroService } from '@/services/characters.service';
+import { IHero, IHeroData} from '@/services/interfaces/interface';
+import { HeroService } from '@/services/operations/operations.service';
 import { useRouter } from "next/router";
 import CardCharacter from "@/components/cardCharacter/cardCharacter";
 import { ParsedUrlQuery } from "querystring";

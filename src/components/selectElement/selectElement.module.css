@@ -11,12 +11,17 @@
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0;
-    text-align: left;  
+    text-align: left;
+    appearance: none; 
+    overflow: hidden;
+    background: url('/arrow-drop-down.svg') no-repeat right; 
 }
 
 .select:hover,.select:focus{
     box-shadow: 0 1px 5px 0 #0003; 
 }
+
+
 
 @media  (width >=768px) and (width <=1279px) {
     .select{ 

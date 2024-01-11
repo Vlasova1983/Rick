@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { IHero } from "@/interfaces/interface";
+import { IHero } from "@/services/interfaces/interface";
 import styles from "./card.module.css";
 
 const Card:FC< {item: IHero}> =({item})=>{

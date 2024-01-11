@@ -12,7 +12,7 @@ const NotFound:NextPage=()=>{
             </Head>
             <h1>404 PAGE NOT FOUND</h1>
             <Image                
-                src="./logo.svg"
+                src="/logo.svg"
                 alt="PAGE NOT FOUND.ERROR 404"           
                 width={723}
                 height={212}

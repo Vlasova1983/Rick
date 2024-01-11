@@ -2,7 +2,7 @@ import { FC} from "react";
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { f2 } from "@/interfaces/interface";
+import { f2 } from "@/services/interfaces/interface";
 import styles from "./inputSearch.module.css";
 
 

@@ -1,24 +1,32 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useRouter } from 'next/router';
 import Link from "next/link";
 import Image from "next/image";
-import { IHeroData, f1,f2 } from "@/interfaces/interface";
+import { IHeroData } from "@/services/interfaces/interface";
+import { f1,f2 } from "@/services/type/type";
 import Card from "@/components/card/card";
 import Input from "@/components/inputSearch/inputSearh";
 import LoadMore from "@/components/loadMore/loadMore";
+import FilterButton from "../filtersButton/filterButton";
+import Modal from "@/components/modal/modal";
+import SelectBlock from "../selectBlock/selectBlock";
 import styles from "./pages.module.css";
-import Select from "@/components/select/select";
 
 
 const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPage,setValueName})=>{ 
   const {query}=useRouter();
   const { pathname } = useRouter(); 
+  const[isActive,setIsActive]=useState<boolean>(false);
+  const changeIsActive=()=>{
+    setIsActive(!isActive);
+  };
+ 
   return (
     <> 
         {pathname===`/characters`&&
         <Image 
             className={styles.imgcharacters}       
-            src="./characters.svg"
+            src="/characters.svg"
             alt="characters"           
             width={312}
             height={104}
@@ -28,7 +36,7 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
         {pathname==='/locations'&&
         <Image
             className={styles.imglocations}
-            src="./locations.svg"
+            src="/locations.svg"
             alt="locations"           
             width={220}
             height={135}
@@ -37,7 +45,7 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
         {pathname===`/episodes`&& 
         <Image
             className={styles.imgepisides}
-            src="./episode.svg"
+            src="/episode.svg"
             alt="episode"           
             width={220}
             height={135}
@@ -46,26 +54,36 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
         {pathname===`/characters`&&
             <div className={styles.wrapper}>
                 <Input setValueName={setValueName}/>
-                <div className={styles.select}>
-                    <Select name={'species'} array={['Species','Human']}/>
+                <div className={styles.filter}>
+                    <FilterButton isActive={isActive} changeIsActive={changeIsActive}/>
                 </div>
+                {isActive &&  
+                <Modal changeIsActive={changeIsActive}>
+                    <div className={styles.conteiner}>
+                        <SelectBlock/>
+                        <FilterButton  isActive={isActive} changeIsActive={changeIsActive}/> 
+                    </div>
+                      
+                </Modal> }
                 <div className={styles.select}>
-                    <Select name={'gender'} array={['Gender','female','male','genderless','unknown']}/>
-                </div>
-                <div className={styles.select}>
-                    <Select name={'status'} array={['Status','alive','dead','unknown']}/>
-                </div>               
+                    <SelectBlock/>
+                </div>                         
             </div>
         }
         {pathname===`/locations`&&
             <div className={styles.wrapper}>
                 <Input setValueName={setValueName}/>
-                <div className={styles.select}>
-                    <Select name={'type'} array={['type','Planet']}/>
+                <div className={styles.filter}>
+                    <FilterButton isActive={isActive} changeIsActive={changeIsActive}/>
                 </div>
+                {isActive &&  
+                <Modal changeIsActive={changeIsActive}>
+                    <SelectBlock/>
+                    <FilterButton  isActive={isActive} changeIsActive={changeIsActive}/>
+                </Modal> }
                 <div className={styles.select}>
-                    <Select name={'dimension'} array={['Dimension','Dimension C-137']}/>
-                </div>                              
+                    <SelectBlock/>
+                </div>                                        
             </div>
         }        
         {pathname===`/episodes`&&

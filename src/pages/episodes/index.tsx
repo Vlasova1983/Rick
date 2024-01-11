@@ -1,8 +1,8 @@
 import {  useEffect,useState } from 'react';
 import { useRouter } from 'next/router';
 import { NextPage,GetServerSideProps,GetServerSidePropsContext } from 'next';
-import {  IHeroData } from '@/interfaces/interface';
-import { HeroService } from '@/services/characters.service';
+import {  IHeroData } from '@/services/interfaces/interface';
+import { HeroService } from '@/services/operations/operations.service';
 import Loader from '@/components/loader/loader';
 import { ParsedUrlQuery } from "querystring";
 import Head from 'next/head';

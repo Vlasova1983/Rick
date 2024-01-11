@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 import { FC } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { IHero, IHeroData } from "@/interfaces/interface";
+import { IHero, IHeroData } from "@/services/interfaces/interface";
 import styles from "./cardCharacter.module.css";
 
 
 const CardCharacter:FC< {item: IHero}> =({item})=>{
 const[result,setResult]=useState<IHeroData>();
 const cardsHtml:IHero[]=[];
-
+const {query}=useRouter();
   for(let i=0;i<item.episode.length;i+=1){  
     fetch(`${item.episode[i]}`) 
       .then((response)=> {return response.json();})
@@ -19,9 +21,9 @@ const cardsHtml:IHero[]=[];
     .then((response)=> {return response.json();})
     .then((data:IHeroData)=>setResult(data)); 
   },[]);
-
+   
   return (
-        <>
+        <>        
             <Image
                 className={styles.images}     
                 src={item.image}
@@ -44,17 +46,41 @@ const cardsHtml:IHero[]=[];
                     <p className={styles.context}>{item.origin.name}</p>
                     <p className={styles.property}>Type</p>                
                     <p className={styles.context}>{item.type}</p>
-                    <p className={styles.property}>Location</p>                
-                    <p className={styles.context}>{item.location.name}</p>                   
+                    <div className={styles.wrapp}>
+                        <div  className={styles.conteiner}>
+                            <h4 className={styles.h4}>Location</h4>                
+                            <p >{item.location.name}</p> 
+                        </div>                        
+                        <Link href={{pathname:`/locations/${Number(item.location.url.slice(-1))}`,query:{page:query.page,name:query.name}}}>                           
+                            <Image           
+                                src="/chevron_right_24px.svg"
+                                alt="chevron_right"           
+                                width={24}
+                                height={24}
+                                priority
+                            />
+                        </Link>                        
+                    </div>                                       
                 </div>
                 <div className={styles.text}>
                     <h3 className={styles.title}>Episodes</h3> 
                     {result?.results.length!==0 && result?.results.slice(0, 4).map(item=>          
                     < div key={item.id} >                    
                         <div className={styles.wrapp} >
-                            <h4 className={styles.h4}>{item.episode}</h4>
-                            <p>{item.name}</p>
-                            <p>{item.air_date}</p>
+                            <div className={styles.conteiner}>
+                                <h4 className={styles.h4}>{item.episode}</h4>
+                                <p>{item.name}</p>
+                                <p>{item.air_date}</p>                             
+                            </div>                            
+                            <Link href={{pathname:`/episodes/${item.id}`,query:{page:query.page,name:query.name}}}>
+                                <Image           
+                                    src="/chevron_right_24px.svg"
+                                    alt="chevron_right"           
+                                    width={24}
+                                    height={24}
+                                    priority
+                                />
+                            </Link>                           
                         </div>      
                     </div >)}                                    
                 </div>          

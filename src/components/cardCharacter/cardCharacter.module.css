@@ -43,11 +43,17 @@
 }
 
 .wrapp{
-    display: flex;
-    flex-direction: column;
+    display: flex;    
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid  var(--text-card); 
-    padding: 16px;
-    gap: 5px;
+    padding: 16px;   
+}
+
+.conteiner{
+    display: flex;
+    flex-direction: column; 
+    gap: 5px;  
 }
 
 .h4{

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { NextPage } from 'next';
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { IHero, IHeroData} from "@/interfaces/interface";
+import { IHero, IHeroData} from "@/services/interfaces/interface";
 import styles from "./cardResident.module.css";
 
 
