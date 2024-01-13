@@ -1,27 +1,14 @@
-import { Component,ReactNode} from "react";
+import { Component} from "react";
 import Image from 'next/image';
 import {f1} from "@/services/type/type";
 import styles from './Modal.module.css';
+import { JSX } from "react/jsx-runtime";
 
 
 
-class Modal extends Component<{children: ReactNode,changeIsActive:f1}>{
-    componentDidMount() {        
-        window.addEventListener('keydown', this.handleKeyClose);
-    }
-
-    componentWillUnmount() {       
-        window.removeEventListener('keydown', this.handleKeyClose);
-    }
+class Modal extends Component<{children: JSX.Element,changeIsActive:f1}>{
  
-    handleKeyClose = (event:any) => {   
-      if (event.code === 'Escape') {
-        this.props.changeIsActive();
-      }
-    };
-
- 
-    handleClose = (event:any) => {      
+    handleClose = (event:Event):void => {      
        const { changeIsActive } = this.props;
         if (event.target === event.currentTarget) {
             changeIsActive();
@@ -34,7 +21,7 @@ class Modal extends Component<{children: ReactNode,changeIsActive:f1}>{
         return ( 
             <>
                 <div className={styles.backdrop}/>     
-                <div className={styles.overlay} onClick={this.handleClose}>
+                <div className={styles.overlay} onClick={()=>this.handleClose}>
                     <div className={styles.modal}>
                         <button type="button" onClick={changeIsActive} className={styles.close}>                               
                         <Image                           
