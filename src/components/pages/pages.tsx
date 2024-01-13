@@ -78,8 +78,10 @@ const Pages:FC<{results:IHeroData|string,setPage:f1,setValueName:f2,value:string
                 </div>
                 {isActive &&  
                 <Modal changeIsActive={changeIsActive}>
-                    <SelectBlock/>
-                    <FilterButton  isActive={isActive} changeIsActive={changeIsActive}/>
+                    <div className={styles.conteiner}>
+                        <SelectBlock/>
+                        <FilterButton  isActive={isActive} changeIsActive={changeIsActive}/>
+                    </div>                    
                 </Modal> }
                 <div className={styles.select}>
                     <SelectBlock/>
