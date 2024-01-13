@@ -1,76 +1,15 @@
-import {IHeroData,query } from "@/services/interfaces/interface";
+import {IHeroData } from "@/services/interfaces/interface";
+import { query } from "../type/type";
 import axios from "axios";
 
 const API_URL=process.env.NEXT_PUBLIC_DOMAIN;
 axios.defaults.baseURL = API_URL;
 
-
-// let data:IHeroData={
-//   info: {
-//     count: 32,
-//     pages: 3,
-//     next: 4,
-//     prev: null
-//   },
-  
-//   results:[
-// {
-//     id: 1,
-//     name: "Rick Sanchez",
-//     status: "Alive",
-//     species: "Human",
-//     type: "",
-//     gender: "Male",
-//     origin: {
-//       name: "Earth",
-//       url: "https://rickandmortyapi.com/api/location/1"
-//     },
-//     location: {
-//     name: "Earth",
-//       url: "https://rickandmortyapi.com/api/location/20"
-//     },
-//     image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-//     episode: [
-//       "https://rickandmortyapi.com/api/episode/1",
-//       "https://rickandmortyapi.com/api/episode/2",
-     
-//     ],
-//     url: "https://rickandmortyapi.com/api/character/1",
-//     created: "2017-11-04T18:48:46.250Z"
-//   },
-//   {
-//     id: 2,
-//     name: "Rick Sanchez",
-//     status: "Alive",
-//     species: "Human",
-//     type: "",
-//     gender: "Male",
-//     origin: {
-//       name: "Earth",
-//       url: "https://rickandmortyapi.com/api/location/1"
-//     },
-//     location: {
-//     name: "Earth",
-//       url: "https://rickandmortyapi.com/api/location/20"
-//     },
-//     image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-//     episode: [
-//       "https://rickandmortyapi.com/api/episode/1",
-//       "https://rickandmortyapi.com/api/episode/2",
-     
-//     ],
-//     url: "https://rickandmortyapi.com/api/character/1",
-//     created: "2017-11-04T18:48:46.250Z"
-//   },
-// ] }  
-    
-
-
 export const HeroService = {
-  async getAll(page:query,name:query){       
+  async getAll(page:query,name:query,gender:query,status:query,species:query){       
     try {           
-      const {data}= await axios.get<IHeroData>(`/character/?page=${page}&name=${name}`);               
-    return data;             
+      const {data}= await axios.get<IHeroData>(`/character/?page=${page}&name=${name}&gender=${gender}&status=${status}&species=${species}`);
+      return data; 
     }
     catch (error) {
       return 'error';
@@ -96,9 +35,9 @@ export const HeroService = {
       return 'error';
     } 
   } ,
-  async getLocation(page:query,name:query){
+  async getLocation(page:query,name:query,type:query,dimension:query){
     try {           
-        const {data}= await axios.get<IHeroData>(`/location/?page=${page}&name=${name}`);                
+        const {data}= await axios.get<IHeroData>(`/location/?page=${page}&name=${name}&type=${type}&dimension=${dimension}`);                
     return data;           
     }
     catch (error) {

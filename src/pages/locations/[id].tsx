@@ -8,12 +8,10 @@ import CardResident from "@/components/cardResident/cardResident";
 import { ParsedUrlQuery } from "querystring";
 import styles from "./locations.module.css";
 
-
-
-
 const LocationsPage:NextPage<{ results:IHero}>=({results})=>{
     const { replace } = useRouter();
-    const {query}=useRouter();   
+    const {query}=useRouter();
+    
     return(
         <>
             <Head>
@@ -21,7 +19,7 @@ const LocationsPage:NextPage<{ results:IHero}>=({results})=>{
             </Head>            
             <Layout>
                 <div className={styles.conteiner} >
-                    <button  className={styles.back} onClick={()=>replace({pathname:`/locations`,query:{page:query.page,name:query.name}})}>GO BACK</button>                   
+                    <button  className={styles.back} onClick={()=>replace({pathname:`/locations`,query:{...query}})}>GO BACK</button>                   
                 </div>              
                 <CardResident residents={results.residents} results={results}/>                 
             </Layout>

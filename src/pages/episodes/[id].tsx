@@ -20,7 +20,7 @@ const EpisodesPage:NextPage<{results:IHero}>=({results})=>{
             </Head>            
             <Layout>
                 <div className={styles.conteiner} >
-                    <button  className={styles.back} onClick={()=>replace({pathname:`/episodes`,query:{page:query.page,name:query.name}})}>GO BACK</button>                   
+                    <button  className={styles.back} onClick={()=>replace({pathname:`/episodes`,query:{...query}})}>GO BACK</button>                   
                 </div>
                 <CardResident residents={results.characters} results={results}/>
             </Layout>

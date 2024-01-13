@@ -12,11 +12,11 @@ import Modal from "@/components/modal/modal";
 import SelectBlock from "../selectBlock/selectBlock";
 import styles from "./pages.module.css";
 
-
-const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPage,setValueName})=>{ 
+const Pages:FC<{results:IHeroData|string,setPage:f1,setValueName:f2,value:string,setValue:f2}> =({results,setPage,setValueName,value,setValue})=>{ 
   const {query}=useRouter();
   const { pathname } = useRouter(); 
-  const[isActive,setIsActive]=useState<boolean>(false);
+  const[isActive,setIsActive]=useState<boolean>(false);  
+       
   const changeIsActive=()=>{
     setIsActive(!isActive);
   };
@@ -53,7 +53,7 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
         />}
         {pathname===`/characters`&&
             <div className={styles.wrapper}>
-                <Input setValueName={setValueName}/>
+                <Input value={value}  setValue={setValue}  setValueName={setValueName}/>
                 <div className={styles.filter}>
                     <FilterButton isActive={isActive} changeIsActive={changeIsActive}/>
                 </div>
@@ -72,7 +72,7 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
         }
         {pathname===`/locations`&&
             <div className={styles.wrapper}>
-                <Input setValueName={setValueName}/>
+                <Input value={value}  setValue={setValue} setValueName={setValueName}/>
                 <div className={styles.filter}>
                     <FilterButton isActive={isActive} changeIsActive={changeIsActive}/>
                 </div>
@@ -88,22 +88,23 @@ const Pages:FC<{results:IHeroData,setPage:f1,setValueName:f2}> =({results,setPag
         }        
         {pathname===`/episodes`&&
             <div className={styles.wrapper}>
-                <Input setValueName={setValueName}/>                              
+                <Input value={value}  setValue={setValue} setValueName={setValueName}/>                              
             </div>
         }        
         <div className={styles.wrapper}>
-            { pathname===`/characters`&& results.results.map(event=>(            
-            <Link className={styles.link} key={event.id} href={{pathname:`/characters/${event.id}`,query:{page:query.page,name:query.name}}}> 
+            { results ==='error' && <p>Nothing found for this search</p>}
+            { pathname===`/characters`&&  typeof(results)!=='string'&& results.results.map(event=>(            
+            <Link className={styles.link} key={event.id} href={{pathname:`/characters/${event.id}`,query:{...query}}}> 
+                <Card  item={event}/>           
+            </Link>))} 
+             { pathname===`/locations`&& typeof(results)!=='string' &&  results.results.map(event=>(            
+            <Link className={styles.link} key={event.id} href={{pathname:`/locations/${event.id}`,query:{...query}}}> 
                 <Card  item={event}/>           
             </Link>))}  
-            { pathname==='/locations'&& results.results.map(event=>(            
-            <Link className={styles.link} key={event.id}  href={{pathname:`/locations/${event.id}`,query:{page:query.page,name:query.name}}}> 
+            { pathname===`/episodes`&&   typeof(results)!=='string' && results.results.map(event=>(            
+            <Link className={styles.link} key={event.id} href={{pathname:`/episodes/${event.id}`,query:{...query}}}> 
                 <Card  item={event}/>           
-            </Link>))}  
-            { pathname===`/episodes`&& results.results.map(event=>(            
-            <Link className={styles.link} key={event.id}  href={{pathname:`/episodes/${event.id}`,query:{page:query.page,name:query.name}}}> 
-                <Card  item={event}/>           
-            </Link>))}   
+            </Link>))}             
         </div>        
       <LoadMore setPage={setPage}/> 
     </>

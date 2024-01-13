@@ -21,8 +21,7 @@ class Modal extends Component<{children: ReactNode,changeIsActive:f1}>{
     };
 
  
-    handleClose = (event:any) => {
-        console.log(event);
+    handleClose = (event:any) => {      
        const { changeIsActive } = this.props;
         if (event.target === event.currentTarget) {
             changeIsActive();

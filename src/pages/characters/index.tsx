@@ -10,35 +10,44 @@ import Layout from '@/components/layout/layout';
 import Pages from '@/components/pages/pages';
 
 const  CharacterPage:NextPage<{ results:IHeroData}>=({results}) =>{ 
-  const {query}=useRouter();  
-  const [pageCharecters,setPageCharecters]=useState<number>(Number(query.page));
-  const [name,setName]=useState<string>(String(query.name));  
-  const router=useRouter(); 
+  const {query}=useRouter();
+  const router=useRouter();
+
+  const [character,setCharacter]=useState<string>(String(query.character_name));
+  const [characterValue,setCharacterValue]=useState<string>(String(query.character_name));
+  const [pageCharecters,setPageCharecters]=useState<number>(Number(query.page_character));
+ 
+
   const setPage=()=>{
     pageCharecters<results.info.pages?setPageCharecters(pageCharecters+1):setPageCharecters(1);
   };
 
-  const setValueName=(value:string)=>{
-    setName(value);
+  const setNameCharacter=(value:string)=>{
+    setCharacter(value);
     setPageCharecters(1);
   }; 
 
   useEffect(()=>{
     router.push({
       pathname:'/characters',
-      query:{
-        page:pageCharecters,
-        name:name               
-      }
-    });
-  },[pageCharecters,name]);  
+      query:{...query,
+      page_character:pageCharecters,
+      character_name:character    
+    }});
+  },[pageCharecters,character]);  
   
   return (
     <Layout>
       <Head>
         <title>Character</title>
       </Head>    
-      <Pages results={results} setPage={setPage} setValueName={setValueName}/>         
+      <Pages 
+        value={characterValue} 
+        setValue={setCharacterValue} 
+        setValueName={setNameCharacter} 
+        results={results} 
+        setPage={setPage} 
+      />         
       {!results && <Loader/>} 
     </Layout>
   );  
@@ -47,7 +56,9 @@ const  CharacterPage:NextPage<{ results:IHeroData}>=({results}) =>{
 
 export const getServerSideProps:GetServerSideProps<{ results: string | IHeroData }> =async (context:GetServerSidePropsContext<ParsedUrlQuery>)=> {
   const { query } = context;
-  const results = await HeroService.getAll(query.page,query.name);   
+  const{page_character,character_name, gender,status,species}=query;
+  
+  const results = await HeroService.getAll(page_character,character_name,gender,status,species);   
   return {
     props:{results}
   };

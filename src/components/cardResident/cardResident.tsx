@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { NextPage } from 'next';
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { IHero, IHeroData} from "@/services/interfaces/interface";
+import {IHero,IHeroData} from "@/services/interfaces/interface";
 import styles from "./cardResident.module.css";
 
 
-const CardResident:NextPage<{ residents:string[] ,results:IHero}>=({residents,results})=>{
+const CardResident:NextPage<{ residents:string[],results:IHero}>=({residents,results})=>{
   const[result,setResult]=useState<IHero[]>([]);
   const { pathname } = useRouter();  
   const cardsHtml:number[]=[];
 
   for(let i=0;i<residents.length;i+=1){  
     fetch(`${residents[i]}`) 
-      .then((response)=> {return response.json();})
-      .then((data:IHero)=>cardsHtml.push(data.id));}
+    .then((response)=> {return response.json();})
+    .then((data:IHero)=>cardsHtml.push(data.id));
+  }
 
   useEffect(() => {
     fetch(`https://rickandmortyapi.com/api/character/${cardsHtml}`) 
@@ -61,7 +62,7 @@ const CardResident:NextPage<{ residents:string[] ,results:IHero}>=({residents,re
         </div >)}     
       </div> 
     </>  
-  ) ;   
+  );   
 };  
 
 export default CardResident;

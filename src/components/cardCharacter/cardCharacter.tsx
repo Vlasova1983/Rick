@@ -8,19 +8,22 @@ import styles from "./cardCharacter.module.css";
 
 
 const CardCharacter:FC< {item: IHero}> =({item})=>{
-const[result,setResult]=useState<IHeroData>();
-const cardsHtml:IHero[]=[];
-const {query}=useRouter();
-  for(let i=0;i<item.episode.length;i+=1){  
-    fetch(`${item.episode[i]}`) 
-      .then((response)=> {return response.json();})
-      .then((data:IHero)=>cardsHtml.push(data));}
+    const {query}=useRouter();    
+    const[result,setResult]=useState<IHeroData>();
+    const cardsHtml:IHero[]=[];
+    const url:string[]=item.location.url.split('/');
 
-  useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/episode/${cardsHtml}`) 
-    .then((response)=> {return response.json();})
-    .then((data:IHeroData)=>setResult(data)); 
-  },[]);
+    for(let i=0;i<item.episode.length;i+=1){  
+        fetch(`${item.episode[i]}`) 
+        .then((response)=> {return response.json();})
+        .then((data:IHero)=>cardsHtml.push(data));
+    }
+
+    useEffect(() => {
+        fetch(`https://rickandmortyapi.com/api/episode/${cardsHtml}`) 
+        .then((response)=> {return response.json();})
+        .then((data:IHeroData)=>setResult(data)); 
+    },[]);    
    
   return (
         <>        
@@ -51,7 +54,7 @@ const {query}=useRouter();
                             <h4 className={styles.h4}>Location</h4>                
                             <p >{item.location.name}</p> 
                         </div>                        
-                        <Link href={{pathname:`/locations/${Number(item.location.url.slice(-1))}`,query:{page:query.page,name:query.name}}}>                           
+                        <Link href={{pathname:`/locations/${url[5]}`,query:{...query}}}>                           
                             <Image           
                                 src="/chevron_right_24px.svg"
                                 alt="chevron_right"           
@@ -72,7 +75,7 @@ const {query}=useRouter();
                                 <p>{item.name}</p>
                                 <p>{item.air_date}</p>                             
                             </div>                            
-                            <Link href={{pathname:`/episodes/${item.id}`,query:{page:query.page,name:query.name}}}>
+                            <Link href={{pathname:`/episodes/${item.id}`,query:{...query}}}>
                                 <Image           
                                     src="/chevron_right_24px.svg"
                                     alt="chevron_right"           

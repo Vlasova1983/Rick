@@ -11,34 +11,42 @@ import Pages from '@/components/pages/pages';
 
 const LocationsPage:NextPage<{ results:IHeroData }>=({results})=>{
   const {query}=useRouter(); 
-  const[pageLocation,setPageLocation]=useState<number>(Number(query.page));
-  const [name,setName]=useState<string>(String(query.name)); 
   const router=useRouter(); 
+  const [location,setLocation]=useState<string>(String(query.location_name));
+  const [locationValue,setLocationValue]=useState<string>(String(query.location_name)); 
+  const [pageLocation,setPageLocation]=useState<number>(Number(query.page_location));  
+  
   const setPage=()=>{
     pageLocation<results.info.pages?setPageLocation(pageLocation+1):setPageLocation(1);
   };
 
-  const setValueName=(value:string)=>{
-    setName(value);
+  const setNameLocation=(value:string)=>{
+    setLocation(value);
     setPageLocation(1);
   }; 
 
   useEffect(()=>{
     router.push({
       pathname:'/locations',
-      query:{
-        page:pageLocation,
-        name:name 
+      query:{...query,
+        page_location:pageLocation,
+        location_name:location 
       }
     });
-  },[pageLocation,name]) ;
+  },[pageLocation,location]);
   
   return (
     <Layout>
       <Head>
         <title>Locations</title>
       </Head>
-      <Pages results={results} setPage={setPage} setValueName={setValueName}/>
+      <Pages 
+        value={locationValue} 
+        setValue={setLocationValue} 
+        setValueName={setNameLocation} 
+        results={results} 
+        setPage={setPage} 
+      />
       {!results && <Loader />} 
     </Layout>  
   );
@@ -47,7 +55,8 @@ const LocationsPage:NextPage<{ results:IHeroData }>=({results})=>{
 
 export const getServerSideProps:GetServerSideProps<{ results: string | IHeroData }> =async (context:GetServerSidePropsContext<ParsedUrlQuery>)=> {
   const { query } = context;
-  const results = await HeroService.getLocation(query.page,query.name);   
+  const {page_location,location_name,type,dimension}=query;
+  const results = await HeroService.getLocation(page_location,location_name,type,dimension);   
   return {
     props:{results}
   };

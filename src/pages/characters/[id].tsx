@@ -10,7 +10,8 @@ import styles from "./character.module.css";
 
 const CharacterPage:NextPage<{ results:IHero }>=({results})=>{
     const { replace } = useRouter(); 
-    const {query}=useRouter();  
+    const {query}=useRouter(); 
+    
     return(
         <>
             <Head>
@@ -18,7 +19,7 @@ const CharacterPage:NextPage<{ results:IHero }>=({results})=>{
             </Head>            
             <Layout>
                 <div className={styles.conteiner} >
-                    <button  className={styles.back} onClick={()=>replace({pathname:`/characters`,query:{page:query.page,name:query.name}})}>GO BACK</button>                   
+                    <button  className={styles.back} onClick={()=>replace({pathname:`/characters`,query:{...query}})}>GO BACK</button>                   
                 </div>
                 <CardCharacter item={results}/>
             </Layout>

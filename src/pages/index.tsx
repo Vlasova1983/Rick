@@ -7,9 +7,18 @@ const  HomePage:NextPage=() =>{
   useEffect(()=>{
     router.push({
       pathname:'/characters',
-      query:{
-        page:1,
-        name:''
+      query:{        
+        character_name:'',
+        page_character:'',
+        location_name:'',
+        page_location:'',
+        episodes_name:'',
+        page_episodes:'',
+        species:'',
+        gender:'',
+        status:'',
+        type:'',
+        dimension:''
       }
     });
   },[]); 
