@@ -1,9 +1,8 @@
 import { Component} from "react";
 import Image from 'next/image';
 import {f1} from "@/services/type/type";
-import styles from './Modal.module.css';
 import { JSX } from "react/jsx-runtime";
-
+import styles from './modal.module.css';
 
 
 class Modal extends Component<{children: JSX.Element,changeIsActive:f1}>{
