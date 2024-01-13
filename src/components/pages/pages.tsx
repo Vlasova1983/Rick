@@ -62,8 +62,7 @@ const Pages:FC<{results:IHeroData|string,setPage:f1,setValueName:f2,value:string
                     <div className={styles.conteiner}>
                         <SelectBlock/>
                         <FilterButton  isActive={isActive} changeIsActive={changeIsActive}/> 
-                    </div>
-                      
+                    </div>                      
                 </Modal> }
                 <div className={styles.select}>
                     <SelectBlock/>
