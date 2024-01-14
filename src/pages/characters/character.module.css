@@ -10,9 +10,14 @@
 }
 
 .back{
-    background: none;
+    background: none;    
     font-family: Karla,sans-serif;
     font-size: 18px;
     font-weight: 700;
     line-height: 21px;
+    transition: all 1s;   
+}
+
+.back:hover,.link:focus{
+    color:var(--text-akcent);    
 }

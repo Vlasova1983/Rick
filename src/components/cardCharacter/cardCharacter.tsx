@@ -54,8 +54,9 @@ const CardCharacter:FC< {item: IHero}> =({item})=>{
                             <h4 className={styles.h4}>Location</h4>                
                             <p >{item.location.name}</p> 
                         </div>                        
-                        <Link href={{pathname:`/locations/${url[5]}`,query:{...query}}}>                           
-                            <Image           
+                        <Link  href={{pathname:`/locations/${url[5]}`,query:{...query}}}>                           
+                            <Image  
+                                className={styles.link}         
                                 src="/chevron_right_24px.svg"
                                 alt="chevron_right"           
                                 width={24}
@@ -75,8 +76,9 @@ const CardCharacter:FC< {item: IHero}> =({item})=>{
                                 <p>{item.name}</p>
                                 <p>{item.air_date}</p>                             
                             </div>                            
-                            <Link href={{pathname:`/episodes/${item.id}`,query:{...query}}}>
-                                <Image           
+                            <Link  href={{pathname:`/episodes/${item.id}`,query:{...query}}}>
+                                <Image 
+                                    className={styles.link}          
                                     src="/chevron_right_24px.svg"
                                     alt="chevron_right"           
                                     width={24}
